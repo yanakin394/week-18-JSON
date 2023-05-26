@@ -1,0 +1,73 @@
+.page_wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.hero_card {
+    width: 400px;
+    height: auto;
+    border: 1px solid black;
+    margin-top: 2%;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Shadows Into Light', cursive;
+}
+.hero_name {
+    font-size: 32px;
+}
+.hero_img {
+    width: 390px;
+    height: auto;
+}
+.hero_rating {
+    position: relative;
+    font-size: 40px;
+    display: inline-block;
+}
+.hero_rating::before {
+    content: "★★★★★";
+    display: block;
+}
+.hero_rating-items {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    overflow: hidden;
+}
+.hero_rating-item {
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    opacity: 0;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+}
+.hero_rating-label {
+    flex: 0 0 20%;
+    height: 100%;
+    cursor: pointer;
+    color: white;
+}
+.hero_rating-label::before {
+    content: "★";
+    display: block;
+    transition: color 0.3s ease 0s;
+}
+.hero_rating-item:checked,
+.hero_rating-item:checked ~ .hero_rating-label {
+    color: yellow;
+}
+.hero_rating-label:hover,
+.hero_rating-label:hover ~ .hero_rating-label,
+.hero_rating-label:checked ~ .hero_rating-label:hover {
+    color: rgb(250, 250, 109);
+}
+.hero_rating-item
