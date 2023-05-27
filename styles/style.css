@@ -54,7 +54,7 @@
     flex: 0 0 20%;
     height: 100%;
     cursor: pointer;
-    color: white;
+    color: rgb(197, 195, 195);
 }
 .hero_rating-label::before {
     content: "★";
@@ -70,4 +70,3 @@
 .hero_rating-label:checked ~ .hero_rating-label:hover {
     color: rgb(250, 250, 109);
 }
-.hero_rating-item

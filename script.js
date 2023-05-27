@@ -127,16 +127,16 @@ document.addEventListener("DOMContentLoaded", () => {
             <img class="hero_img" src="${hero.url}" alt="superhero">
             <div class="hero_rating">
                 <div class="hero_rating-items">
-                    <input id="hero_rating-5" type="radio" class="hero_rating-item" name="hero_rating" value="5">
-                    <label for="hero_rating-5" class="hero_rating-label"></label>
-                    <input id="hero_rating-4" type="radio" class="hero_rating-item" name="hero_rating" value="4">
-                    <label for="hero_rating-4" class="hero_rating-label"></label>
-                    <input id="hero_rating-3" type="radio" class="hero_rating-item" name="hero_rating" value="3">
-                    <label for="hero_rating-3" class="hero_rating-label"></label>
-                    <input id="hero_rating-2" type="radio" class="hero_rating-item" name="hero_rating" value="2">
-                    <label for="hero_rating-2" class="hero_rating-label"></label>
-                    <input id="hero_rating-1" type="radio" class="hero_rating-item" name="hero_rating" value="1">
-                    <label for="hero_rating-1" class="hero_rating-label"></label>
+                    <input id="hero_rating-5${hero.name}" type="radio" class="hero_rating-item" name="hero_rating${hero.name}" value="5">
+                    <label for="hero_rating-5${hero.name}" class="hero_rating-label"></label>
+                    <input id="hero_rating-4${hero.name}" type="radio" class="hero_rating-item" name="hero_rating${hero.name}" value="4">
+                    <label for="hero_rating-4${hero.name}" class="hero_rating-label"></label>
+                    <input id="hero_rating-3${hero.name}" type="radio" class="hero_rating-item" name="hero_rating${hero.name}" value="3">
+                    <label for="hero_rating-3${hero.name}" class="hero_rating-label"></label>
+                    <input id="hero_rating-2${hero.name}" type="radio" class="hero_rating-item" name="hero_rating${hero.name}" value="2">
+                    <label for="hero_rating-2${hero.name}" class="hero_rating-label"></label>
+                    <input id="hero_rating-1${hero.name}" type="radio" class="hero_rating-item" name="hero_rating${hero.name}" value="1">
+                    <label for="hero_rating-1${hero.name}" class="hero_rating-label"></label>
                 </div>
             </div>
         </div>`;
