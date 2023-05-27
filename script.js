@@ -115,7 +115,7 @@ const heroesContainer = document.getElementById('heroes_container');
 document.addEventListener("DOMContentLoaded", () => {
     const superheroes = JSON.parse(superheroesJSON);        //парсим json 
     let heroesCard = '';
-    for(let hero of superheroes) {
+    for(let hero of superheroes) {                          // проходим циклом по массиву и добавляем в html
         heroesCard += `
         <div class="hero_card">
             <p class="hero_name">${hero.name}</p>
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <img class="hero_img" src="${hero.url}" alt="superhero">
             <div class="hero_rating">
                 <div class="hero_rating-items">
-                    <input id="hero_rating-5${hero.name}" type="radio" class="hero_rating-item" name="hero_rating${hero.name}" value="5">
+                    <input id="hero_rating-5${hero.name}" type="radio" class="hero_rating-item" name="hero_rating ${hero.name}" value="5">
                     <label for="hero_rating-5${hero.name}" class="hero_rating-label"></label>
                     <input id="hero_rating-4${hero.name}" type="radio" class="hero_rating-item" name="hero_rating${hero.name}" value="4">
                     <label for="hero_rating-4${hero.name}" class="hero_rating-label"></label>
@@ -142,4 +142,14 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>`;
         heroesContainer.innerHTML = heroesCard;
     }
+    //создаю массив из пунктов рейтинга
+    let heroRating = document.querySelectorAll('.hero_rating-item');
+    let heroRatingArr = Array.from(heroRating);
+
+    //прохожу циклом по звездочкам и сохраняю в локальное хранилище
+    heroRatingArr.forEach(function (item) {
+        item.addEventListener('click', () => {
+            localStorage.setItem(item.name, item.value);
+        })
+    })
 })
