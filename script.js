@@ -142,6 +142,11 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>`;
         heroesContainer.innerHTML = heroesCard;
     }
+
+    if(localStorage.getItem(savedName)) {
+        const savedScore = localStorage.getItem(savedName);
+        console.log(savedScore);
+    }
     //создаю массив из пунктов рейтинга
     let heroRating = document.querySelectorAll('.hero_rating-item');
     let heroRatingArr = Array.from(heroRating);
@@ -153,3 +158,18 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     })
 })
+    //создаю массив из пунктов рейтинга
+    let heroRating = document.querySelectorAll('.hero_rating-item');
+    let heroRatingArr = Array.from(heroRating);
+    let savedRating = '';
+    let savedName = '';
+
+    //прохожу циклом по звездочкам и сохраняю в локальное хранилище
+    heroRatingArr.forEach(function (item) {
+        item.addEventListener('click', () => {
+            savedRating = item.value;
+            savedName = item.name;
+            localStorage.setItem(savedName, savedRating);
+            console.log(savedName);
+        })
+    })
