@@ -106,11 +106,13 @@ const superheroesArr = [
         info: 'Как и Росомаха из Людей Икс, Дэдпул был подвергнут опытам по программе «Оружие Икс». Ученые попытались исцелить его рак, привив его клеткам способность к регенерации. Как и всегда в комиксах, что-то пошло не так, и Дэдпул остался изуродованным и психически нестабильным. Это единственный супергерой из списка, который однозначно не на стороне добра. Дэдпул наслаждается насилием. Первоначально появившись в основной Вселенной Marvel, он получил альтернативные варианты в других реальностях Мультивселенной. Что оставалось неизменным — его циничное, чёрное чувство юмора: за него Дэдпула прозвали «Болтливым наёмником»',
     },
 ];
+
+
 // сериализовала файлы в формат json для практики
 const superheroesJSON = JSON.stringify(superheroesArr);
-
 const heroesContainer = document.getElementById('heroes_container');
-
+let savedRating = '';
+let savedName = '';
 //вешаю обработчик на загрузку страницы
 document.addEventListener("DOMContentLoaded", () => {
     const superheroes = JSON.parse(superheroesJSON);        //парсим json 
@@ -127,15 +129,15 @@ document.addEventListener("DOMContentLoaded", () => {
             <img class="hero_img" src="${hero.url}" alt="superhero">
             <div class="hero_rating">
                 <div class="hero_rating-items">
-                    <input id="hero_rating-5${hero.name}" type="radio" class="hero_rating-item" name="hero_rating ${hero.name}" value="5">
+                    <input id="hero_rating-5${hero.name}" type="radio" class="hero_rating-item" name="${hero.name}" value="5">
                     <label for="hero_rating-5${hero.name}" class="hero_rating-label"></label>
-                    <input id="hero_rating-4${hero.name}" type="radio" class="hero_rating-item" name="hero_rating${hero.name}" value="4">
+                    <input id="hero_rating-4${hero.name}" type="radio" class="hero_rating-item" name="${hero.name}" value="4">
                     <label for="hero_rating-4${hero.name}" class="hero_rating-label"></label>
-                    <input id="hero_rating-3${hero.name}" type="radio" class="hero_rating-item" name="hero_rating${hero.name}" value="3">
+                    <input id="hero_rating-3${hero.name}" type="radio" class="hero_rating-item" name="${hero.name}" value="3">
                     <label for="hero_rating-3${hero.name}" class="hero_rating-label"></label>
-                    <input id="hero_rating-2${hero.name}" type="radio" class="hero_rating-item" name="hero_rating${hero.name}" value="2">
+                    <input id="hero_rating-2${hero.name}" type="radio" class="hero_rating-item" name="${hero.name}" value="2">
                     <label for="hero_rating-2${hero.name}" class="hero_rating-label"></label>
-                    <input id="hero_rating-1${hero.name}" type="radio" class="hero_rating-item" name="hero_rating${hero.name}" value="1">
+                    <input id="hero_rating-1${hero.name}" type="radio" class="hero_rating-item" name="${hero.name}" value="1">
                     <label for="hero_rating-1${hero.name}" class="hero_rating-label"></label>
                 </div>
             </div>
@@ -143,33 +145,43 @@ document.addEventListener("DOMContentLoaded", () => {
         heroesContainer.innerHTML = heroesCard;
     }
 
-    if(localStorage.getItem(savedName)) {
+    const name = () => {
+        heroRatingArr.forEach(function (item) {
+            return item.name
+            })
+    }
+    console.log(name);
+
+    if(localStorage.getItem(savedName) === name) {
         const savedScore = localStorage.getItem(savedName);
         console.log(savedScore);
     }
-    //создаю массив из пунктов рейтинга
-    let heroRating = document.querySelectorAll('.hero_rating-item');
-    let heroRatingArr = Array.from(heroRating);
 
-    //прохожу циклом по звездочкам и сохраняю в локальное хранилище
-    heroRatingArr.forEach(function (item) {
-        item.addEventListener('click', () => {
-            localStorage.setItem(item.name, item.value);
-        })
-    })
-})
     //создаю массив из пунктов рейтинга
     let heroRating = document.querySelectorAll('.hero_rating-item');
     let heroRatingArr = Array.from(heroRating);
-    let savedRating = '';
-    let savedName = '';
 
     //прохожу циклом по звездочкам и сохраняю в локальное хранилище
     heroRatingArr.forEach(function (item) {
         item.addEventListener('click', () => {
             savedRating = item.value;
             savedName = item.name;
+            console.log(item.name, item.value);
             localStorage.setItem(savedName, savedRating);
-            console.log(savedName);
+/*             localStorage.setItem(item.name, item.value); */
         })
     })
+})
+    //создаю массив из пунктов рейтинга
+    let heroRating = document.querySelectorAll('.hero_rating-item');
+    let heroRatingArr = Array.from(heroRating);
+
+    //прохожу циклом по звездочкам и сохраняю в локальное хранилище
+/*     heroRatingArr.forEach(function (item) {
+        item.addEventListener('click', () => {
+            savedRating = item.value;
+            savedName = item.name;
+            console.log(item.name, item.value);
+            localStorage.setItem(savedName, savedRating);
+        })
+    }) */
