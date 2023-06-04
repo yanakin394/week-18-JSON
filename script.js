@@ -172,9 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     })
 })
-    //создаю массив из пунктов рейтинга
-    let heroRating = document.querySelectorAll('.hero_rating-item');
-    let heroRatingArr = Array.from(heroRating);
 
     //прохожу циклом по звездочкам и сохраняю в локальное хранилище
 /*     heroRatingArr.forEach(function (item) {
